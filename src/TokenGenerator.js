@@ -35,6 +35,20 @@ const TokenGenerator = () => {
         setRedTokens(newRedTokens);
     };
 
+    const clearTokens = () => {
+        setBlueTokens([]);
+        setRedTokens([]);
+        setFormData({
+          numBlue: '',
+          prefixBlue: '',
+          bluePerRow: '',
+          numRed: '',
+          prefixRed: '',
+          redPerRow: '',
+        });
+      };
+    
+
 
 
     return (
@@ -166,6 +180,17 @@ const TokenGenerator = () => {
                         />
                     </Box>
                 </Box>
+
+                {/* Buttons */}
+                <Box sx={{ mt: 3, display: 'flex', justifyContent: 'space-evenly' }}>
+                    <Button variant="contained" color="primary" onClick={generateTokens}>
+                    Generate
+                    </Button>
+                    <Button variant="outlined" color="secondary" onClick={clearTokens}>
+                    Clear
+                    </Button>
+                </Box>
+
 
 
 
