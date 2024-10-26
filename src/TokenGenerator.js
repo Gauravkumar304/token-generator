@@ -47,6 +47,41 @@ const TokenGenerator = () => {
           redPerRow: '',
         });
       };
+
+      const renderTokens = (tokens, color, perRow) => (
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: `repeat(${perRow}, 1fr)`,
+            gap: 2,
+            mb: 2,
+          }}
+        >
+          {tokens.map((token, index) => (
+            <Box
+              key={index}
+              sx={{
+                width: 60,
+                height: 60,
+                backgroundColor: color === 'blue' ? '#2196F3' : '#F44336',
+                color: 'white',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                borderRadius: 2,
+                fontSize: '1.2rem',
+                transition: 'background-color 0.3s', 
+                '&:hover': {
+                  backgroundColor: color === 'blue' ? '#1976D2' : '#D32F2F', 
+                },
+              }}
+            >
+              {token.label}
+            </Box>
+          ))}
+        </Box>
+      );
+    
     
 
 
@@ -190,6 +225,20 @@ const TokenGenerator = () => {
                     Clear
                     </Button>
                 </Box>
+
+                {/* Display Tokens */}
+      <Box sx={{ mt: 4 ,textAlign:'center' }}>
+        <Typography variant="h6" sx={{ color: '#2196F3', mb: 1 }}>
+        
+          Blue Tokens
+        </Typography>
+        {renderTokens(blueTokens, 'blue', formData.bluePerRow)}
+        <Typography variant="h6" sx={{ color: '#F44336', mb: 1 }}>
+          Red Tokens
+        </Typography>
+        {renderTokens(redTokens, 'red', formData.redPerRow)}
+      </Box>
+
 
 
 
